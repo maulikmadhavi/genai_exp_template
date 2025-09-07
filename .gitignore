@@ -2,10 +2,10 @@ _arxiv/
 mlruns/
 .env
 pixi.lock
-tensorboard_logs/
 mm_inputs_lib/__pycache__/data_processor.cpython-312.pyc
 mm_inputs_lib/__pycache__/encoding_mm.cpython-312.pyc
 prompts_lib/__pycache__/defaults.cpython-312.pyc
 utils/__pycache__/request_utils.cpython-312.pyc
 executor_lib/__pycache__/defaults.cpython-312.pyc
 executor_lib/__pycache__/base.cpython-312.pyc
+events.out.*

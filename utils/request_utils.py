@@ -1,16 +1,19 @@
 import requests
-from prompts_lib.defaults import (
-    BASE_VLM_PROMPT,
-    BASE_LLM_PROMPT,
-    LLM_MAX_LENGTH,
-    VLM_MAX_LENGTH,
-    LLM_TEMPERATURE,
-    VLM_TEMPERATURE,
-    SEED,
-)
+
+from utils.general import get_defaults
+
+defaults = get_defaults()
+BASE_VLM_PROMPT = defaults.get("PROMPTS", {}).get("BASE_VLM_PROMPT")
+BASE_LLM_PROMPT = defaults.get("PROMPTS", {}).get("BASE_LLM_PROMPT")
+LLM_MAX_LENGTH = defaults.get("GENERATION_PARAMS", {}).get("LLM_MAX_LENGTH")
+VLM_MAX_LENGTH = defaults.get("GENERATION_PARAMS", {}).get("VLM_MAX_LENGTH")
+LLM_TEMPERATURE = defaults.get("GENERATION_PARAMS", {}).get("LLM_TEMPERATURE")
+VLM_TEMPERATURE = defaults.get("GENERATION_PARAMS", {}).get("VLM_TEMPERATURE")
+SEED = defaults.get("GENERATION_PARAMS", {}).get("SEED")
+VLLM_API_ENDPOINT = defaults.get("GENERATION_PARAMS", {}).get("VLLM_API_ENDPOINT")
 
 
-def send_llm_summary_request(**kwargs) -> str | None:
+def send_llm_summary_request(**kwargs) -> str | bool:
     """Send a text query prompt to the VLLM API."""
     headers = {
         "Content-Type": "application/json",
@@ -122,7 +125,7 @@ def send_vlm_image_request(**kwargs) -> str | bool:
         "Content-Type": "application/json",
     }
     # Extract parameters from kwargs
-    vllm_api_endpoint = kwargs.get("vllm_api_endpoint", "http://localhost:8000/v1/chat/completions")
+    vllm_api_endpoint = kwargs.get("vllm_api_endpoint", VLLM_API_ENDPOINT)
     vllm_model = kwargs.get("vllm_model")
     if not vllm_model:
         print("No vllm_model provided. Please provide a model name.")

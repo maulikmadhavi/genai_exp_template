@@ -5,4 +5,7 @@ data:
   selected_columns: [make, model, body_type]
   processor: mm_inputs_lib.data_processor.process_csv
 prompt_template: prompts_lib//vault//stanford_car_analysis.yaml
-output_dir: exp//car_attributes//results
+output: 
+  output_dir: exp//car_attributes//results
+  exp_name: cars_analysis
+vlm_model: qwen2.5-vl-3b-instruct

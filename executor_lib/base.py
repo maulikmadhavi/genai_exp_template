@@ -1,9 +1,5 @@
 import yaml
-
-
-def load_yaml(file_path: str) -> dict:
-    with open(file_path, "r") as file:
-        return yaml.safe_load(file)
+from utils.general import load_yaml
 
 
 class BASE:
@@ -17,9 +13,6 @@ class BASE:
     def get_prompt_config(self) -> dict:
         return self.config.get("prompt_template", {})
 
-    def get_output_dir(self) -> str:
-        return self.config.get("output_dir", "./results")
-
     def get_processor(self) -> str:
         return self.config.get("processor", None)
 
@@ -27,6 +20,12 @@ class BASE:
         if not self.config.get("prompt_template", ""):
             raise ValueError("No prompt_template found in the configuration.")
         return load_yaml(self.config.get("prompt_template"))
+
+    def get_experiment_name(self) -> str:
+        return self.config["output"]["exp_name"]
+
+    def get_output_dir(self) -> dict:
+        return self.config.get("output", {}).get("output_dir", "./outputs")
 
     def run_execution(self):
         # Placeholder for execution logic
