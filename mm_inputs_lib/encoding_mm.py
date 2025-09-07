@@ -20,8 +20,8 @@ def encode_base64_content_for_imagefile(image_path: str) -> str:
 
 
 def process_video(
-    input_video_file: str | Path,
-    output_video_file: str | Path,
+    input_video_file: Union[str, Path],
+    output_video_file: Union[str, Path],
     total_samples: int = 10,
     fps: int = 1,
     resize: Tuple[int, int] = (640, 480),
