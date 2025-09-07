@@ -1,0 +1,8 @@
+data:
+  csv_path: D://research_data//Stanford_cars//test_annotation.csv
+  image_dir: D://research_data//Stanford_cars
+  image_header_name: image
+  selected_columns: [make, model, body_type]
+  processor: mm_inputs_lib.data_processor.process_csv
+prompt_template: prompts_lib//vault//stanford_car_analysis.yaml
+output_dir: exp//car_attributes//results

@@ -1,0 +1,19 @@
+VLM_PROMPT: 
+  SYSTEM: |
+    You are an expert data analyst.
+  USER: |
+    Extract the relevant information about car mainly, the make, model, body_type from the following text. Return the information in simple text format.
+
+LLM_EVALUTOR:
+  SYSTEM: |
+    You are an expert data analyst.
+  USER: |
+    Given the following car information in JSON format, evaluate its completeness and accuracy. If any information is missing or seems incorrect, provide suggestions for improvement. Return your evaluation in a structured format.
+    {
+      "make": "Toyota",
+      "model": "Camry",
+      "body_type": "Sedan"
+    }
+    {
+      "evaluation": "The provided information is complete and accurate. No improvements needed."
+    } 
