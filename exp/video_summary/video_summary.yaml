@@ -1,0 +1,9 @@
+data:
+  csv_path: D://research_data//SUTD_trafficQA//sample.csv
+  video_dir: D://research_data//SUTD_trafficQA//videos
+  video_header_name: video
+  selected_columns: []
+  processor: mm_inputs_lib.data_processor.process_video_csv
+prompt_template: prompts_lib//vault//video_summary.yaml
+output_dir: exp//video_summary//results
+vlm_model: qwen2.5-vl-3b-instruct

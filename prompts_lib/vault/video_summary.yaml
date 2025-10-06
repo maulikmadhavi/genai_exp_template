@@ -1,0 +1,6 @@
+VLM_PROMPT: 
+  SYSTEM: |
+    You are an expert video analyst.
+  USER: |
+    Summarize the video content in a concise manner, focusing on key events and details. Provide the summary in simple text format.
+    
