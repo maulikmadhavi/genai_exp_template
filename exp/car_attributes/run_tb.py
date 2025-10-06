@@ -23,7 +23,6 @@ base_.run_execution()
 output_dir = base_.get_output_dir()
 exp_name = base_.get_experiment_name()
 vlm_name = base_.config.get("vlm_model", "qwen2.5-vl-3b-instruct")
-breakpoint()
 log_dir = set_up_exp_dir(f"{output_dir}/tensorboard_logs/{exp_name}")
 
 logger = setup_logger(f"{log_dir}/experiment.log")

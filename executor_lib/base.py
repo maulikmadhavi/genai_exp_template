@@ -1,11 +1,12 @@
 import yaml
+import os
 from utils.general import load_yaml
 
 
 class BASE:
-    def __init__(self, exp_config: str):
-        self.exp_config = exp_config
-        self.config = load_yaml(exp_config)
+    def __init__(self, exp_dir: str, exp_file: str):
+        self.exp_config = os.path.abspath(os.path.join(exp_dir, exp_file))
+        self.config = load_yaml(self.exp_config)
 
     def get_data_config(self) -> dict:
         return self.config.get("data", {})
@@ -17,9 +18,10 @@ class BASE:
         return self.config.get("processor", None)
 
     def get_prompts_file_config(self) -> str:
-        if not self.config.get("prompt_template", ""):
+        prompt_file = self.config.get("prompt_template", "")
+        if not prompt_file:
             raise ValueError("No prompt_template found in the configuration.")
-        return load_yaml(self.config.get("prompt_template"))
+        return load_yaml(os.path.abspath(prompt_file))
 
     def get_experiment_name(self) -> str:
         return self.config["output"]["exp_name"]
